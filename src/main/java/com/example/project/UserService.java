@@ -11,12 +11,16 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    Set<String> ids;
-
     public boolean addUserLogic(String id) {
-        if(!ids.contains(id)){
+        if(userRepository.checkUser(id)){
             return userRepository.addUser(id);
+        }
+        return false;
+    }
+
+    public boolean addUserLogic(UserModel userModel) {
+        if(userRepository.checkUser(userModel.getId())){
+            return userRepository.addUser(userModel);
         }
         return false;
     }
