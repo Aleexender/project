@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService; // 생성자 주입방식
 
+    UserController(UserService userService){ // 생성자 주입방식
+        this.userService = userService;
+    }
 
     @GetMapping(path = "/create")
     public boolean create(@RequestParam String id) {
@@ -27,6 +31,11 @@ public class UserController {
                            @RequestParam String password) {
         UserModel userModel = new UserModel(id, nickname, password);
         userService.addUserLogic(userModel);
+    }
+
+    @GetMapping(path = "/findUser")
+    public UserModel findUser(@RequestParam String id){
+        return userService.getUser(id);
     }
 
 
