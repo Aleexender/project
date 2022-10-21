@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Configuration
 public class Config {
-
     @Bean
     Set<String> ids(){
         return new HashSet<>();
