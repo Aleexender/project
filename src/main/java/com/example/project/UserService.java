@@ -1,15 +1,17 @@
 package com.example.project;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
-@Service
+@Service// 이클래스 전채를 빈으로 만든다.new연산자 오브젝트
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    // 오브젝트들 끼리 연결
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     public boolean addUserLogic(String id) {
         if(userRepository.checkUser(id)){
@@ -24,5 +26,10 @@ public class UserService {
         }
         return false;
     }
+
+    public UserModel getUser(String id) {
+        return userRepository.getUser(id);
+    }
+
 
 }
