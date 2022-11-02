@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Configuration
-public class Config {
+public class Config { //configuration
     @Bean
     Set<String> ids(){
         return new HashSet<>();
