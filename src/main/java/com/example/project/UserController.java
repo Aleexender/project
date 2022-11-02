@@ -24,7 +24,7 @@ public class UserController {
         return userService.addUserLogic(id);
     }
 
-    //ex ) : http://localhost:8080/user/fullCreate?id=hi3&nickname=blah&password=asdf
+    //ex ) : http://localhost:8080/user/fullCreate?id=hi3&nickname=blah&password=asdf 접속 사이트
     @GetMapping(path = "/fullCreate")
     public void createUser(@RequestParam String id,
                            @RequestParam String nickname,
